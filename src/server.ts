@@ -1,6 +1,7 @@
 import express from 'express';
 import {graphqlHTTP} from 'express-graphql';
 import {buildSchema} from 'graphql';
+import "reflect-metadata";
 
 // GraphQL schema
 const schema = buildSchema(`

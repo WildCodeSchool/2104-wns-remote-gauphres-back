@@ -1,0 +1,19 @@
+mutation createUser {
+  createUser(data: {
+    userName: "NiceUser",
+    firstname: "userFirstname",
+    lastname: "userLastname",
+    password: "userPassword",
+    email: "userEmail@email.com",
+    birthDate: "66/66/6666"
+  })
+  {
+    userName
+    firstname
+    lastname
+    password
+    email
+    birthDate
+    creationDate
+  }
+}

@@ -1,0 +1,16 @@
+mutation sendMessage {
+    sendMessage(chatRoom: {
+        title: "this current chatRoom"
+    },
+    message: {
+        text: "bla bla bla bla"
+    },
+    author: {
+        userName: "moi"
+    })
+    {
+        chatRoom
+        message
+        author
+    }
+}

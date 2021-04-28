@@ -7,27 +7,27 @@ import { User } from './User';
 export class ChatRoom {
     @Prop()
     @Field()
-    id!: string;
+    id?: string;
 
     @Prop({ ref: 'User' })
     @Field((type) => [User])
-    users!: Ref<User>[];
+    users?: Ref<User>[];
 
     @Prop({ type: Message })
     @Field((type) => [Message])
-    messages!: Message[];
+    messages?: Message[];
 
     @Prop()
     @Field()
-    creationDate!: Date;
+    creationDate?: Date;
 
     @Prop()
     @Field()
-    isActiv!: Boolean;
+    isActiv?: Boolean;
 
     @Prop()
     @Field()
-    title!: string;
+    title?: string;
 }
 export const ChatRoomModel = getModelForClass(ChatRoom);
 

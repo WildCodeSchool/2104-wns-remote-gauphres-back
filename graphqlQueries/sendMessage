@@ -1,16 +1,18 @@
 mutation sendMessage {
-    sendMessage(chatRoom: {
-        title: "this current chatRoom"
-    },
-    message: {
-        text: "bla bla bla bla"
-    },
-    author: {
-        userName: "moi"
-    })
-    {
-        chatRoom
-        message
-        author
+  sendMessage(
+    _id: "60899d41b22fc4077824b62d",
+    newMessage: {
+      id: "monId",
+      text: "blablablabla"
     }
+  )
+  {
+    messages {
+      text
+      creationDate
+    }
+    creationDate
+    isActiv
+    title
+  }
 }

@@ -1,20 +1,31 @@
+import { Prop } from '@typegoose/typegoose';
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { User } from './User';
 
 @ObjectType()
 export class Message {
+    @Prop()
+    @Field()
+    id?: string;
+
+    @Prop()
     @Field()
     text!: string;
 
+    @Prop({ ref: 'User' })
     @Field((type) => User)
-    author!: User;
+    author?: User;
 
+    @Prop()
     @Field()
-    creationDate!: Date;
+    creationDate?: Date;
 }
 
 @InputType()
 export class CreateMessageInput {
+    @Field()
+    id?: string;
+
     @Field()
     text!: string;
 

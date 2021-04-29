@@ -1,5 +1,5 @@
 import { getModelForClass, Prop, Ref } from '@typegoose/typegoose';
-import { Field, InputType, ObjectType } from 'type-graphql';
+import { Field, ID, InputType, ObjectType } from 'type-graphql';
 import { ChatRoom } from './ChatRoom';
 
 @ObjectType()
@@ -50,7 +50,7 @@ export class User {
 
     @Prop()
     @Field()
-    creationDate?: Date;
+    createdAt?: Date;
 
     /* @Prop()
     @Field()
@@ -80,8 +80,17 @@ export class CreateUserInput {
     birthDate!: string;
 
     @Field()
-    creationDate: Date = new Date(Date.now());
+    createdAt: Date = new Date(Date.now());
 
     @Field()
     isConnected: boolean = false;
+}
+
+@InputType()
+export class chatMemberInput {
+    @Field()
+    id!: string;
+
+    @Field()
+    userName!: string;
 }

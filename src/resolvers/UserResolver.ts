@@ -9,6 +9,14 @@ export class UserResolver {
         return users;
     }
 
+    @Query(() => User)
+    async getOneUser(@Arg('email') email: string) {
+        const user = await UserModel.findOne({
+            email: email,
+        });
+        return user;
+    }
+
     @Mutation(() => User)
     async createUser(@Arg('data') data: CreateUserInput) {
         const newUser = await UserModel.create(data);

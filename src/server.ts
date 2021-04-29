@@ -1,31 +1,38 @@
-import express from 'express';
-import { graphqlHTTP } from 'express-graphql';
-import { buildSchema } from 'graphql';
 import 'reflect-metadata';
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import { UserResolver } from './resolvers/UserResolver';
+import { buildSchema } from 'type-graphql';
+import { ApolloServer } from 'apollo-server';
+import { ChatRoomResolver } from './resolvers/ChatRoomResolver';
 
-// GraphQL schema
-const schema = buildSchema(` 
-    type Query {
-        message: String
-    }
-`);
-
-// Root resolver
-const root = {
-    message: () => 'Hello World!',
-};
-
-// Create an express server and a GraphQL endpoint
 const app = express();
-app.use(
-    '/graphql',
 
-    graphqlHTTP({
-        schema: schema,
-        rootValue: root,
-        graphiql: true,
-    })
-);
-app.listen(5000, () =>
-    console.log('Express GraphQL Server Now Running On localhost:5000/graphql')
-);
+require('dotenv').config();
+
+// Middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+
+async function start() {
+    // Connect to Atlas DB
+    const uri = `mongodb+srv://gauphreAdmin:${process.env.DB_PASSWORD}@moowdydb.afpoa.mongodb.net/moowdyDb?retryWrites=true&w=majority`;
+    mongoose.connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        autoIndex: true,
+    });
+
+    const schema = await buildSchema({
+        resolvers: [UserResolver, ChatRoomResolver],
+    });
+
+    const server = new ApolloServer({ schema, playground: true });
+    const { url } = await server.listen(5000);
+    console.log(`server ok on ${url}`);
+}
+
+start();

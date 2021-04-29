@@ -1,0 +1,13 @@
+{
+  allUsers {
+    userName
+    firstname
+    lastname
+    chatrooms {title}
+    avatar
+    isConnected
+    email
+    birthDate
+    creationDate
+  }
+}

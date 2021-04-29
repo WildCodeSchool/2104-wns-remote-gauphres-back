@@ -1,0 +1,12 @@
+mutation createChatRoom {
+  createChatRoom(data: {
+    title: "Ma Chat Room"
+  })
+  {
+    users {id}
+    messages {id}
+    creationDate
+    isActiv
+    title
+  }
+}

@@ -1,7 +1,7 @@
 import { getModelForClass, Prop, Ref } from '@typegoose/typegoose';
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { Message } from './Message';
-import { User } from './User';
+import { chatMemberInput, User } from './User';
 
 @ObjectType()
 export class ChatRoom {
@@ -9,9 +9,9 @@ export class ChatRoom {
     @Field()
     id?: string;
 
-    @Prop({ ref: 'User' })
+    @Prop({ type: User })
     @Field((type) => [User])
-    users?: Ref<User>[];
+    users?: User[];
 
     @Prop({ type: Message })
     @Field((type) => [Message])
@@ -19,7 +19,7 @@ export class ChatRoom {
 
     @Prop()
     @Field()
-    creationDate?: Date;
+    createdAt?: Date;
 
     @Prop()
     @Field()
@@ -34,11 +34,14 @@ export const ChatRoomModel = getModelForClass(ChatRoom);
 @InputType()
 export class CreateChatRoomInput {
     @Field()
-    creationDate: Date = new Date(Date.now());
+    createdAt: Date = new Date(Date.now());
 
     @Field()
     isActiv: boolean = true;
 
     @Field()
     title!: string;
+
+    @Field((type) => [chatMemberInput])
+    users!: chatMemberInput[];
 }

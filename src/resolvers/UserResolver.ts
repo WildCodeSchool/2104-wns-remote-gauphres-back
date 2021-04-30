@@ -1,5 +1,5 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { CreateUserInput, User, UserModel } from '../models/User';
+import { User, UserInput, UserModel } from '../models/User';
 
 @Resolver(User)
 export class UserResolver {
@@ -18,7 +18,7 @@ export class UserResolver {
     }
 
     @Mutation(() => User)
-    async createUser(@Arg('data') data: CreateUserInput) {
+    async createUser(@Arg('data') data: UserInput) {
         const newUser = await UserModel.create(data);
         await newUser.save();
         return newUser;

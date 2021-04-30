@@ -1,18 +1,24 @@
-mutation sendMessage {
-  sendMessage(
-    _id: "60899d41b22fc4077824b62d",
+mutation sendMessage($id: String!, $newMessage: CreateMessageInput!) {
+        sendMessage(_id: $id, newMessage: $newMessage) {
+            messages {
+                text
+                createdAt
+            }
+            createdAt
+            isActiv
+            title
+        }
+    }
+
+
+variables
+
+variables: {
+    id: chatId,
     newMessage: {
-      id: "monId",
-      text: "blablablabla"
+        author: {
+            id: '60899d221aeef5070efe5c45',
+            userName: 'NiceUser',
+        },
+        text: message,
     }
-  )
-  {
-    messages {
-      text
-      creationDate
-    }
-    creationDate
-    isActiv
-    title
-  }
-}

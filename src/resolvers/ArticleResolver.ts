@@ -1,4 +1,3 @@
-import { mongoose } from '@typegoose/typegoose';
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { Article, ArticleModel, CreateArticleInput } from "../models/Article";
 

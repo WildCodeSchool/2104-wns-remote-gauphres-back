@@ -1,4 +1,4 @@
-import { Prop } from "@typegoose/typegoose";
+import { getModelForClass, Prop } from "@typegoose/typegoose";
 import { Field, ObjectType } from "type-graphql";
 import { User } from "./User";
 
@@ -40,3 +40,5 @@ export class Event {
     @Field()
     eventDate?: Date;
 }
+
+export const EventModel = getModelForClass(Event);

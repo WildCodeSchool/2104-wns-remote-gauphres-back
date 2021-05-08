@@ -1,4 +1,4 @@
-import { Prop } from "@typegoose/typegoose";
+import { getModelForClass, Prop } from "@typegoose/typegoose";
 import { ObjectType, Field } from "type-graphql";
 
 @ObjectType()
@@ -15,3 +15,6 @@ title?: string
 @Field()
 image?: string
 }
+
+export const MoodModel = getModelForClass(Mood);
+

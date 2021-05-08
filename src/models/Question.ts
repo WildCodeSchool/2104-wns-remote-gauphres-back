@@ -1,4 +1,4 @@
-import { Prop } from "@typegoose/typegoose";
+import { getModelForClass, Prop } from "@typegoose/typegoose";
 import { ObjectType, Field } from "type-graphql";
 import { Hobby } from "./Hobby";
 
@@ -21,3 +21,5 @@ image?: string
 @Field((type) => [Hobby])
 hobbie?: Hobby[];
 }
+
+export const QuestionModel = getModelForClass(Question);

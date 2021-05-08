@@ -1,7 +1,7 @@
 import { getModelForClass, Prop } from '@typegoose/typegoose';
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { Message } from './Message';
-import { User, UserInput } from './User';
+import { User, UserChatRoom } from './User';
 
 @ObjectType()
 export class ChatRoom {
@@ -42,6 +42,6 @@ export class CreateChatRoomInput {
     @Field()
     title?: string;
 
-    @Field((type) => [UserInput])
-    user?: UserInput[];
+    @Field((type) => [UserChatRoom])
+    user?: UserChatRoom[];
 }

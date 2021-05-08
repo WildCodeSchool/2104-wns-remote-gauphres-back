@@ -90,6 +90,18 @@ export class UserInput {
 }
 
 @InputType()
+export class UserChatRoom {
+    @Field()
+    userName?: string;
+
+    @Field({ nullable: true })
+    avatar?: string;
+
+    @Field()
+    isConnected?: boolean = false;
+}
+
+@InputType()
 export class MessageSender {
     @Field()
     id!: string;

@@ -7,6 +7,7 @@ import { buildSchema } from 'type-graphql';
 import { ApolloServer } from 'apollo-server';
 import { ChatRoomResolver } from './resolvers/ChatRoomResolver';
 import { ArticleResolver } from './resolvers/ArticleResolver';
+import { MoodResolver } from './resolvers/MoodResolver';
 
 const app = express();
 
@@ -28,7 +29,7 @@ async function start() {
     });
 
     const schema = await buildSchema({
-        resolvers: [UserResolver, ChatRoomResolver, ArticleResolver],
+        resolvers: [UserResolver, ChatRoomResolver, ArticleResolver, MoodResolver],
     });
 
     const server = new ApolloServer({ schema, playground: true });

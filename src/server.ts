@@ -29,7 +29,12 @@ async function start() {
     });
 
     const schema = await buildSchema({
-        resolvers: [UserResolver, ChatRoomResolver, ArticleResolver, MoodResolver],
+        resolvers: [
+            UserResolver,
+            ChatRoomResolver,
+            ArticleResolver,
+            MoodResolver,
+        ],
     });
 
     const server = new ApolloServer({ schema, playground: true });

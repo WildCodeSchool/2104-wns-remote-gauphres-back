@@ -1,5 +1,5 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreateMoodInput, Mood, MoodModel } from "../models/Mood";
+import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import { CreateMoodInput, Mood, MoodModel } from '../models/Mood';
 
 @Resolver(Mood)
 export class MoodResolver {
@@ -9,12 +9,10 @@ export class MoodResolver {
         return moods;
     }
 
-@Mutation(() => Mood)
-async createMood(
-    @Arg('data') data: CreateMoodInput
-): Promise<Mood>{
-    const newMood = await MoodModel.create(data);
-    await newMood.save();
-    return newMood;
-}
+    @Mutation(() => Mood)
+    async createMood(@Arg('data') data: CreateMoodInput): Promise<Mood> {
+        const newMood = await MoodModel.create(data);
+        await newMood.save();
+        return newMood;
+    }
 }

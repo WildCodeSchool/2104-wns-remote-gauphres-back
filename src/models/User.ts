@@ -86,7 +86,19 @@ export class UserInput {
     createdA?: Date = new Date(Date.now());
 
     @Field()
-    isConnecte?: boolean = false;
+    isConnected?: boolean = false;
+}
+
+@InputType()
+export class UserChatRoom {
+    @Field()
+    userName?: string;
+
+    @Field({ nullable: true })
+    avatar?: string;
+
+    @Field()
+    isConnected?: boolean = false;
 }
 
 @InputType()
@@ -96,4 +108,10 @@ export class MessageSender {
 
     @Field()
     userName!: string;
+}
+
+@InputType()
+export class ArticleCreator {
+    @Field()
+    username!: string;
 }

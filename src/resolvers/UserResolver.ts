@@ -4,13 +4,13 @@ import { User, UserInput, UserModel } from '../models/User';
 @Resolver(User)
 export class UserResolver {
     @Query(() => [User])
-    async allUsers(): Promise<User[]> {
+    async getAllUsers(): Promise<User[]> {
         const users = await UserModel.find();
         return users;
     }
 
     @Query(() => User)
-    async getOneUser(@Arg('email') email: string) {
+    async getUserByEmail(@Arg('email') email: string) {
         const user = await UserModel.findOne({
             email: email,
         });

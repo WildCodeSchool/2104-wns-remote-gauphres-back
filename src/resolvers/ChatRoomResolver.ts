@@ -10,7 +10,7 @@ import { CreateMessageInput, Message } from '../models/Message';
 @Resolver(ChatRoom)
 export class ChatRoomResolver {
     @Query(() => [ChatRoom])
-    async allChatRooms(): Promise<ChatRoom[]> {
+    async getAllChatRooms(): Promise<ChatRoom[]> {
         const chatrooms = await ChatRoomModel.find();
         return chatrooms;
     }

@@ -6,6 +6,7 @@ import {
     CreateChatRoomInput,
 } from '../models/ChatRoom';
 import { CreateMessageInput, Message } from '../models/Message';
+import { Validators } from '../services/Validators';
 
 @Resolver(ChatRoom)
 export class ChatRoomResolver {
@@ -38,15 +39,18 @@ export class ChatRoomResolver {
         @Arg('_id') _id: string,
         @Arg('newMessage', () => CreateMessageInput) message: Message
     ) {
-        const temp = await ChatRoomModel.findOneAndUpdate(
-            // TODO: deprecated so need to be "updateOne" but make an error of null field
-            { _id: _id },
-            {
-                $push: {
-                    messages: message,
-                },
-            }
-        );
-        return temp;
+        if (Validators.isMessageValid(message)) {
+            const updatedChatRoom = await ChatRoomModel.findOneAndUpdate(
+                { _id: _id },
+                {
+                    $push: {
+                        messages: message,
+                    },
+                }
+            );
+            return updatedChatRoom;
+        } else {
+            throw new Error("A message can't be empty");
+        }
     }
 }

@@ -4,8 +4,8 @@ import {
     ChatRoom,
     ChatRoomModel,
     CreateChatRoomInput,
-} from '../models/ChatRooms';
-import { CreateMessageInput, Message } from '../models/Messages';
+} from '../models/ChatRoom';
+import { CreateMessageInput, Message } from '../models/Message';
 import { Validators } from '../services/Validators';
 
 @Resolver(ChatRoom)

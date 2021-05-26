@@ -1,6 +1,6 @@
 import { getModelForClass, Prop, Ref } from '@typegoose/typegoose';
 import { Field, InputType, ObjectType } from 'type-graphql';
-import { ChatRoom } from './ChatRooms';
+import { ChatRoom } from './ChatRoom';
 
 @ObjectType()
 export class User {

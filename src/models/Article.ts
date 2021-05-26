@@ -1,6 +1,6 @@
 import { getModelForClass, Prop } from '@typegoose/typegoose';
 import { Field, InputType, ObjectType } from 'type-graphql';
-import { ArticleCreator, User } from './Users';
+import { ArticleCreator, User } from './User';
 
 @ObjectType()
 export class Article {

@@ -1,4 +1,4 @@
-import { Message } from '../models/Messages';
+import { Message } from '../models/Message';
 
 export class Validators {
     static isMessageValid(message: Message): boolean {

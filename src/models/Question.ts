@@ -18,7 +18,7 @@ export class Question {
 
     @Prop({ type: Hobby })
     @Field((type) => [Hobby])
-    hobbie?: Hobby[];
+    hobbies?: Hobby[];
 }
 
 export const QuestionModel = getModelForClass(Question);

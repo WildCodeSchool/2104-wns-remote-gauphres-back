@@ -43,5 +43,5 @@ export class CreateChatRoomInput {
     title?: string;
 
     @Field((type) => [UserChatRoom])
-    user?: UserChatRoom[];
+    users?: UserChatRoom[];
 }

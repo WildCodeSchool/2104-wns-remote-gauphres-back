@@ -26,6 +26,7 @@ async function start() {
         useUnifiedTopology: true,
         useCreateIndex: true,
         autoIndex: true,
+        useFindAndModify: false,
     });
 
     const schema = await buildSchema({

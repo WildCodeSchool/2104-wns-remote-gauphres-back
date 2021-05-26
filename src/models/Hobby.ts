@@ -25,4 +25,4 @@ export class Hobby {
     category?: string;
 }
 
-export const HoobyModel = getModelForClass(Hobby);
+export const HobbyModel = getModelForClass(Hobby);

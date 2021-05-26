@@ -1,6 +1,6 @@
-import { getModelForClass, Prop } from "@typegoose/typegoose";
-import { Field, ObjectType } from "type-graphql";
-import { User } from "./User";
+import { getModelForClass, Prop } from '@typegoose/typegoose';
+import { Field, ObjectType } from 'type-graphql';
+import { User } from './User';
 
 @ObjectType()
 export class Event {
@@ -24,13 +24,13 @@ export class Event {
     @Field()
     category?: string;
 
-    @Prop({ type: User})
+    @Prop({ type: User })
     @Field((type) => User)
     author?: User;
 
-    @Prop({ type: User})
+    @Prop({ type: User })
     @Field((type) => [User])
-    attendee?: User[];
+    attendees?: User[];
 
     @Prop()
     @Field()

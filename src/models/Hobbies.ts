@@ -1,6 +1,6 @@
 import { getModelForClass, Prop } from '@typegoose/typegoose';
 import { ObjectType, Field } from 'type-graphql';
-import { User } from './User';
+import { User } from './Users';
 
 @ObjectType()
 export class Hobby {
@@ -25,4 +25,4 @@ export class Hobby {
     category?: string;
 }
 
-export const HoobyModel = getModelForClass(Hobby);
+export const HobbyModel = getModelForClass(Hobby);

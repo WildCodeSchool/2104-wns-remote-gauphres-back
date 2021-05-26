@@ -4,8 +4,8 @@ import {
     ChatRoom,
     ChatRoomModel,
     CreateChatRoomInput,
-} from '../models/ChatRoom';
-import { CreateMessageInput, Message } from '../models/Message';
+} from '../models/ChatRooms';
+import { CreateMessageInput, Message } from '../models/Messages';
 import { Validators } from '../services/Validators';
 
 @Resolver(ChatRoom)
@@ -30,7 +30,7 @@ export class ChatRoomResolver {
     ): Promise<ChatRoom> {
         const newChatRoom = await ChatRoomModel.create(data);
         await newChatRoom.save();
-        // need to add the user-random-setup
+        // TODO need to add the user-random-setup
         return newChatRoom;
     }
 

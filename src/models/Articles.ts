@@ -1,6 +1,6 @@
-import { getModelForClass, Prop } from "@typegoose/typegoose";
-import { Field, InputType, ObjectType } from "type-graphql";
-import { ArticleCreator, User } from "./User";
+import { getModelForClass, Prop } from '@typegoose/typegoose';
+import { Field, InputType, ObjectType } from 'type-graphql';
+import { ArticleCreator, User } from './Users';
 
 @ObjectType()
 export class Article {
@@ -16,7 +16,7 @@ export class Article {
     @Field()
     description?: string;
 
-    @Prop({ type: User})
+    @Prop({ type: User })
     @Field((type) => User)
     author?: User;
 
@@ -27,7 +27,6 @@ export class Article {
     @Prop()
     @Field()
     url?: string;
-
 }
 
 export const ArticleModel = getModelForClass(Article);
@@ -43,7 +42,7 @@ export class CreateArticleInput {
     @Field((type) => ArticleCreator)
     author?: ArticleCreator;
 
-    // TOTHINK: how to make certain that the linked article is recent ?
+    // TODO how to make certain that the linked article is recent ?
     // Date problems between the actual webSite article and the linkedArticle
     @Field()
     createdAt: Date = new Date(Date.now());

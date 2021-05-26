@@ -1,6 +1,6 @@
 import { getModelForClass, Prop } from '@typegoose/typegoose';
 import { ObjectType, Field } from 'type-graphql';
-import { Hobby } from './Hobby';
+import { Hobby } from './Hobbies';
 
 @ObjectType()
 export class Question {

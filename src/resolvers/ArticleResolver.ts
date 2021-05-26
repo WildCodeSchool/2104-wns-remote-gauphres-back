@@ -1,5 +1,5 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { Article, ArticleModel, CreateArticleInput } from '../models/Article';
+import { Article, ArticleModel, CreateArticleInput } from '../models/Articles';
 
 @Resolver(Article)
 export class ArticleResolver {

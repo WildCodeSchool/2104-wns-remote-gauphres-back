@@ -1,5 +1,5 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { CreateMoodInput, Mood, MoodModel } from '../models/Mood';
+import { CreateMoodInput, Mood, MoodModel } from '../models/Moods';
 
 @Resolver(Mood)
 export class MoodResolver {

@@ -1,6 +1,8 @@
 import { getModelForClass, Prop, Ref } from '@typegoose/typegoose';
+import { type } from 'node:os';
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { ChatRoom } from './ChatRoom';
+import { Mood} from './Mood';
 
 @ObjectType()
 export class User {
@@ -52,9 +54,9 @@ export class User {
     @Field()
     createdAt?: Date;
 
-    /* @Prop()
-    @Field()
-    mood?: Object; */
+    @Prop({ type: Mood})
+    @Field((type) => Mood)
+    userMood?: Mood;
 }
 
 export const UserModel = getModelForClass(User);
@@ -83,7 +85,7 @@ export class UserInput {
     birthDate?: string;
 
     @Field()
-    createdA?: Date = new Date(Date.now());
+    createdAt?: Date = new Date(Date.now());
 
     @Field()
     isConnected?: boolean = false;
@@ -114,4 +116,16 @@ export class MessageSender {
 export class ArticleCreator {
     @Field()
     username!: string;
+}
+
+@InputType()
+export class CreateMoodInputForUser {
+    @Field()
+    userId!: string; 
+    
+    @Field()
+    title!: string;
+
+    @Field()
+    image!: string;
 }

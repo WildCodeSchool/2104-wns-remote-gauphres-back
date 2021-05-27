@@ -83,7 +83,7 @@ export class UserInput {
     birthDate?: string;
 
     @Field()
-    createdA?: Date = new Date(Date.now());
+    createdAt?: Date = new Date(Date.now());
 
     @Field()
     isConnected?: boolean = false;

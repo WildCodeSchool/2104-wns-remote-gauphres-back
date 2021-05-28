@@ -16,7 +16,7 @@ export class Mood {
     image?: string;
 }
 
-// TODO do we want users in mood to maybe get all users in a mood
+// TODO: do we want users in mood to maybe get all users in a mood
 
 export const MoodModel = getModelForClass(Mood);
 

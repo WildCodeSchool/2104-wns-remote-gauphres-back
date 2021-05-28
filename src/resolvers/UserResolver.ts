@@ -1,5 +1,5 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { User, UserInput, UserModel } from '../models/User';
+import { CreateMoodInputForUser, User, UserInput, UserModel } from '../models/User';
 
 @Resolver(User)
 export class UserResolver {
@@ -23,4 +23,17 @@ export class UserResolver {
         await newUser.save();
         return newUser;
     }
+
+    @Mutation(() => User)
+        async updateUserMood(
+        @Arg('newMood') newMood: CreateMoodInputForUser
+    ) {
+            const updatedUserMood = await UserModel.findOneAndUpdate(
+                { _id: newMood.userId},
+                { userMood: {title: newMood.title, image: newMood.image} }
+            );
+            
+            return updatedUserMood;
+    }
+
 }

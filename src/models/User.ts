@@ -2,13 +2,14 @@ import { getModelForClass, Prop, Ref } from '@typegoose/typegoose';
 import { type } from 'node:os';
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { ChatRoom } from './ChatRoom';
-import { Mood} from './Mood';
+import { Mood } from './Mood';
+import { Hobby } from './Hobby';
 
 @ObjectType()
 export class User {
     @Prop()
     @Field()
-    id!: string;
+    _id?: string;
 
     @Prop()
     @Field()
@@ -30,9 +31,9 @@ export class User {
     @Field((type) => [ChatRoom])
     chatrooms?: Ref<ChatRoom>[];
 
-    /* @Prop()
-    @Field()
-    hobbies?: Object[]; */
+    @Prop({ ref: 'Hobby' })
+    @Field(() => [Hobby])
+    hobbies?: Hobby[];
 
     @Prop()
     @Field({ nullable: true })
@@ -54,7 +55,7 @@ export class User {
     @Field()
     createdAt?: Date;
 
-    @Prop({ type: Mood})
+    @Prop({ type: Mood })
     @Field((type) => Mood)
     userMood?: Mood;
 }
@@ -121,8 +122,8 @@ export class ArticleCreator {
 @InputType()
 export class CreateMoodInputForUser {
     @Field()
-    userId!: string; 
-    
+    userId!: string;
+
     @Field()
     title!: string;
 

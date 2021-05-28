@@ -7,7 +7,7 @@ import { User, UserChatRoom } from './User';
 export class ChatRoom {
     @Prop()
     @Field()
-    id?: string;
+    id!: string;
 
     @Prop({ type: User })
     @Field((type) => [User])

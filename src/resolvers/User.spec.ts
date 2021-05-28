@@ -36,6 +36,13 @@ describe(
              }
                 
          )
+         afterAll(
+             async () => {
+                 if( apollo !== null )
+                await apollo.stop();
+                await mongoose.disconnect();
+             }
+         )
         it( "Test - Resolver for the Users Connected",
             async ()=>{
 

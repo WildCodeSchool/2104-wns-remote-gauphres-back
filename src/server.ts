@@ -8,7 +8,6 @@ import { ApolloServer } from 'apollo-server';
 import { ChatRoomResolver } from './resolvers/ChatRoomResolver';
 import { ArticleResolver } from './resolvers/ArticleResolver';
 import { MoodResolver } from './resolvers/MoodResolver';
-import { config } from './config/environnement.spect';
 import { MongoError } from 'mongodb';
 
 const app = express();

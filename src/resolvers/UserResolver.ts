@@ -20,7 +20,7 @@ export class UserResolver {
     @Query(() => [User])
     async getUsersConnected(): Promise<User[]> {
         const users = await UserModel.find(
-            { isConnected: true }
+            { isConnected:true }
         );
         return users;
     }

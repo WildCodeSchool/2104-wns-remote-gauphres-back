@@ -32,7 +32,7 @@ export class UserResolver {
                 { _id: newMood.userId},
                 { userMood: {title: newMood.title, image: newMood.image} }
             );
-            console.log(updatedUserMood);
+            
             return updatedUserMood;
     }
 

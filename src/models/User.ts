@@ -1,12 +1,13 @@
 import { getModelForClass, Prop, Ref } from '@typegoose/typegoose';
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { ChatRoom } from './ChatRoom';
+import { Hobby } from './Hobby';
 
 @ObjectType()
 export class User {
     @Prop()
     @Field()
-    id!: string;
+    _id?: string;
 
     @Prop()
     @Field()
@@ -28,9 +29,9 @@ export class User {
     @Field((type) => [ChatRoom])
     chatrooms?: Ref<ChatRoom>[];
 
-    /* @Prop()
-    @Field()
-    hobbies?: Object[]; */
+    @Prop({ ref: 'Hobby' })
+    @Field(() => [Hobby])
+    hobbies?: Hobby[];
 
     @Prop()
     @Field({ nullable: true })

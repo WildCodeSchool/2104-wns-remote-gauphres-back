@@ -1,6 +1,6 @@
 mutation createUser {
   createUser(data: {
-    userName: "NiceUser",
+    username: "NiceUser",
     firstname: "userFirstname",
     lastname: "userLastname",
     password: "userPassword",
@@ -8,7 +8,7 @@ mutation createUser {
     birthDate: "66/66/6666"
   })
   {
-    userName
+    username
     firstname
     lastname
     password

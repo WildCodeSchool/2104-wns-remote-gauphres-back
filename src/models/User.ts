@@ -13,7 +13,7 @@ export class User {
 
     @Prop()
     @Field()
-    userName?: string;
+    username?: string;
 
     @Prop()
     @Field()
@@ -65,7 +65,7 @@ export const UserModel = getModelForClass(User);
 @InputType()
 export class UserInput {
     @Field()
-    userName?: string;
+    username?: string;
 
     @Field()
     firstname?: string;
@@ -95,7 +95,7 @@ export class UserInput {
 @InputType()
 export class UserChatRoom {
     @Field()
-    userName?: string;
+    username?: string;
 
     @Field({ nullable: true })
     avatar?: string;
@@ -110,7 +110,7 @@ export class MessageSender {
     id!: string;
 
     @Field()
-    userName!: string;
+    username!: string;
 }
 
 @InputType()

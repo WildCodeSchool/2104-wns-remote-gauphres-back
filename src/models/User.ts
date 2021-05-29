@@ -11,7 +11,7 @@ export class User {
     @Field()
     id!: string;
 
-    @Prop()
+    @Prop({ unique: true })
     @Field()
     username?: string;
 

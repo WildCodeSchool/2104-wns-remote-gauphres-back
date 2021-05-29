@@ -23,6 +23,14 @@ export class UserResolver {
         return user;
     }
 
+    @Query(() => User)
+    async getUserByUsername(@Arg('username') username: string) {
+        const user = await UserModel.findOne({
+            username: username,
+        });
+        return user;
+    }
+
     // TODO: As MongoDb use random ID that we can't really use in the app
     // we don't need this query yet. It will be replace by getUserByusername.
 

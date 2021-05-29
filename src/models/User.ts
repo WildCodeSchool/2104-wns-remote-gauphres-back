@@ -9,7 +9,7 @@ import { Hobby } from './Hobby';
 export class User {
     @Prop()
     @Field()
-    id!: string;
+    _id?: string;
 
     @Prop({ unique: true })
     @Field()

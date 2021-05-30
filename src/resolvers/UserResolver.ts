@@ -17,6 +17,14 @@ export class UserResolver {
         return user;
     }
 
+    @Query(() => [User])
+    async getUsersConnected(): Promise<User[]> {
+        const users = await UserModel.find(
+            { isConnected:true }
+        );
+        return users;
+    }
+
     @Mutation(() => User)
     async createUser(@Arg('data') data: UserInput) {
         const newUser = await UserModel.create(data);
@@ -37,3 +45,7 @@ export class UserResolver {
     }
 
 }
+function filter(arg0: string, arg1: boolean) {
+    throw new Error('Function not implemented.');
+}
+

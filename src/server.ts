@@ -8,6 +8,7 @@ import { ApolloServer } from 'apollo-server';
 import { ChatRoomResolver } from './resolvers/ChatRoomResolver';
 import { ArticleResolver } from './resolvers/ArticleResolver';
 import { MoodResolver } from './resolvers/MoodResolver';
+import { MongoError } from 'mongodb';
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-async function start() {
+export async function start() {
     // Connect to Atlas DB
     const uri = `mongodb+srv://gauphreAdmin:${process.env.DB_PASSWORD}@moowdydb.afpoa.mongodb.net/moowdyDb?retryWrites=true&w=majority`;
     mongoose.connect(uri, {

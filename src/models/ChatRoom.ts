@@ -1,4 +1,4 @@
-import { getModelForClass, Prop } from '@typegoose/typegoose';
+import { Prop } from '@typegoose/typegoose';
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { Message } from './Message';
 import { User, UserChatRoom } from './User';
@@ -29,7 +29,7 @@ export class ChatRoom {
     @Field()
     title?: string;
 }
-export const ChatRoomModel = getModelForClass(ChatRoom);
+//export const ChatRoomModel = getModelForClass(ChatRoom);
 
 @InputType()
 export class CreateChatRoomInput {

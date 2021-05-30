@@ -1,11 +1,11 @@
 mutation createUser {
   createUser(data: {
-    username: "NiceUser",
-    firstname: "userFirstname",
-    lastname: "userLastname",
+    username: "NewKindUser",
+    firstname: "pouet",
+    lastname: "pouat",
     password: "userPassword",
-    email: "userEmail@email.com",
-    birthDate: "66/66/6666"
+    email: "newEmail@email.com",
+    birthDate: "6666/66/66"
   })
   {
     username
@@ -14,6 +14,6 @@ mutation createUser {
     password
     email
     birthDate
-    creationDate
+    createdAt
   }
 }

@@ -9,7 +9,7 @@ import { Hobby } from './Hobby';
 export class User {
     @Prop()
     @Field()
-    _id?: string;
+    id?: string;
 
     @Prop({ unique: true })
     @Field()
@@ -49,7 +49,7 @@ export class User {
 
     @Prop()
     @Field()
-    birthDate?: string;
+    birthDate?: Date;
 
     @Prop()
     @Field()
@@ -83,7 +83,7 @@ export class UserInput {
     avatar?: string;
 
     @Field()
-    birthDate?: string;
+    birthDate?: Date;
 
     @Field()
     createdAt?: Date = new Date(Date.now());

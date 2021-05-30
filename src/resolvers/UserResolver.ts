@@ -45,6 +45,7 @@ export class UserResolver {
     @Mutation(() => User)
     async createUser(@Arg('data') data: UserInput) {
         const newUser = await UserModel.create(data);
+        newUser.birthDate = new Date(data.birthDate!);
         await newUser.save();
         return newUser;
     }

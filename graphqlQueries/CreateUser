@@ -5,7 +5,7 @@ mutation createUser {
     lastname: "pouat",
     password: "userPassword",
     email: "newEmail@email.com",
-    birthDate: "6666/66/66"
+    birthDate: "2012-11-24"
   })
   {
     username

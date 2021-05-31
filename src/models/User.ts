@@ -2,17 +2,18 @@ import { getModelForClass, Prop, Ref } from '@typegoose/typegoose';
 import { type } from 'node:os';
 import { Field, InputType, ObjectType } from 'type-graphql';
 import { ChatRoom } from './ChatRoom';
-import { Mood} from './Mood';
+import { Mood } from './Mood';
+import { Hobby } from './Hobby';
 
 @ObjectType()
 export class User {
     @Prop()
     @Field()
-    id!: string;
+    id?: string;
 
-    @Prop()
+    @Prop({ unique: true })
     @Field()
-    userName?: string;
+    username?: string;
 
     @Prop()
     @Field()
@@ -30,9 +31,9 @@ export class User {
     @Field((type) => [ChatRoom])
     chatrooms?: Ref<ChatRoom>[];
 
-    /* @Prop()
-    @Field()
-    hobbies?: Object[]; */
+    @Prop({ ref: 'Hobby' })
+    @Field(() => [Hobby])
+    hobbies?: Hobby[];
 
     @Prop()
     @Field({ nullable: true })
@@ -48,13 +49,13 @@ export class User {
 
     @Prop()
     @Field()
-    birthDate?: string;
+    birthDate?: Date;
 
     @Prop()
     @Field()
     createdAt?: Date;
 
-    @Prop({ type: Mood})
+    @Prop({ type: Mood })
     @Field((type) => Mood)
     userMood?: Mood;
 }
@@ -64,7 +65,7 @@ export const UserModel = getModelForClass(User);
 @InputType()
 export class UserInput {
     @Field()
-    userName?: string;
+    username?: string;
 
     @Field()
     firstname?: string;
@@ -82,7 +83,7 @@ export class UserInput {
     avatar?: string;
 
     @Field()
-    birthDate?: string;
+    birthDate?: Date;
 
     @Field()
     createdAt?: Date = new Date(Date.now());
@@ -94,7 +95,7 @@ export class UserInput {
 @InputType()
 export class UserChatRoom {
     @Field()
-    userName?: string;
+    username?: string;
 
     @Field({ nullable: true })
     avatar?: string;
@@ -109,7 +110,7 @@ export class MessageSender {
     id!: string;
 
     @Field()
-    userName!: string;
+    username!: string;
 }
 
 @InputType()
@@ -121,8 +122,8 @@ export class ArticleCreator {
 @InputType()
 export class CreateMoodInputForUser {
     @Field()
-    userId!: string; 
-    
+    userId!: string;
+
     @Field()
     title!: string;
 

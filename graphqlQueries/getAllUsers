@@ -1,6 +1,6 @@
 {
   getAllUsers {
-    userName
+    username
     firstname
     lastname
     chatrooms {title}

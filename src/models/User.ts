@@ -10,7 +10,7 @@ export class User {
 
     @Prop()
     @Field()
-    userName?: string;
+    username?: string;
 
     @Prop()
     @Field()
@@ -52,6 +52,10 @@ export class User {
     @Field()
     createdAt?: Date;
 
+    @Prop()
+    @Field()
+    accessToken?: string;
+
     /* @Prop()
     @Field()
     mood?: Object; */
@@ -62,7 +66,7 @@ export const UserModel = getModelForClass(User);
 @InputType()
 export class UserInput {
     @Field()
-    userName?: string;
+    username?: string;
 
     @Field()
     firstname?: string;
@@ -83,7 +87,7 @@ export class UserInput {
     birthDate?: string;
 
     @Field()
-    createdA?: Date = new Date(Date.now());
+    createdAt?: Date = new Date(Date.now());
 
     @Field()
     isConnected?: boolean = false;
@@ -92,7 +96,7 @@ export class UserInput {
 @InputType()
 export class UserChatRoom {
     @Field()
-    userName?: string;
+    username?: string;
 
     @Field({ nullable: true })
     avatar?: string;
@@ -107,7 +111,7 @@ export class MessageSender {
     id!: string;
 
     @Field()
-    userName!: string;
+    username!: string;
 }
 
 @InputType()
@@ -117,7 +121,17 @@ export class ArticleCreator {
 }
 
 @ObjectType()
-export class LoginResponse {
+export class UserWithToken {
     @Field()
     accessToken!: string;
+    @Field()
+    user!: User;
+}
+
+@InputType()
+export class LoginInput {
+    @Field()
+    email!: string;
+    @Field()
+    password!: string;
 }

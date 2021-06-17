@@ -1,5 +1,6 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { User, UserInput, UserModel } from '../models/User';
+import { User, UserInput, UserModel, LoginResponse } from '../models/User';
+import { sign } from 'jsonwebtoken';
 
 @Resolver(User)
 export class UserResolver {
@@ -22,5 +23,23 @@ export class UserResolver {
         const newUser = await UserModel.create(data);
         await newUser.save();
         return newUser;
+    }
+
+    //test
+    @Mutation(() => LoginResponse)
+    async Login(
+        @Arg("email") email: string,
+        @Arg("password") password: string
+    ): Promise<LoginResponse> {
+
+        const user = await UserModel.findOne({where: { email: 'userEmail@email.com' }});
+
+        if (!user) {
+            throw new Error('Cet utilisateur est introuvable')
+        }
+
+        return {
+            accessToken: sign( {userId: user.id}, 'secretJWT')
+        };
     }
 }

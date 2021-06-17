@@ -115,3 +115,9 @@ export class ArticleCreator {
     @Field()
     username!: string;
 }
+
+@ObjectType()
+export class LoginResponse {
+    @Field()
+    accessToken!: string;
+}

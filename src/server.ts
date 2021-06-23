@@ -20,7 +20,7 @@ app.use(cors());
 
 async function start() {
     // Connect to Atlas DB
-    const uri = `mongodb+srv://gauphreAdmin:${process.env.DB_PASSWORD}@moowdydb.afpoa.mongodb.net/moowdyDb?retryWrites=true&w=majority`;
+    const uri = `mongodb+srv://gauphreAdmin:OALByCtSaYHbDHaG@moowdydb.afpoa.mongodb.net/moowdyDb?retryWrites=true&w=majority`;
     mongoose.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,

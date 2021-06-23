@@ -1,2 +1,5 @@
-# Dependencies
-node_modules
+# dependencies
+/node_modules
+
+# random
+.env
